@@ -6,16 +6,26 @@ class CodeMaker
   attr_reader :code
 
   def initialize
-    @code = %w[R G B Y O P].sample(4)
+    @code = ALLOWED_COLORS.sample(4).uniq
   end
 
   def exact_match_feedback(guess)
-    exact_match = []
-    guess.each_with_index do |color, position|
-      exact_match.push(color) if color == code[position]
-    end
-    exact_match_count = exact_match.length
+    exact_match_count = guess.select.with_index do |color, position|
+      color == code[position]
+    end.length
     puts "EXACT MATCHES: #{exact_match_count}"
     exact_match_count
+  end
+
+  def color_match_feedback(guess)
+    color_match_count = 0
+
+    guess.each_with_index do |color, position|
+      next if color == code[position]
+
+      color_match_count += 1 if code.include?(color)
+    end
+    puts "COLOR MATCHES: #{color_match_count}"
+    color_match_count
   end
 end

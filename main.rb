@@ -8,3 +8,4 @@ code = CodeMaker.new
 
 p code.code
 code.exact_match_feedback(%w[R P G O])
+code.color_match_feedback(%w[R P G O])
