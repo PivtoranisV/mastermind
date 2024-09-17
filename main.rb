@@ -7,3 +7,4 @@ require_relative 'lib/code_maker'
 code = CodeMaker.new
 
 p code.code
+code.exact_match_feedback(%w[R P G O])
