@@ -13,6 +13,7 @@ class CodeMaker
     exact_match_count = guess.select.with_index do |color, position|
       color == code[position]
     end.length
+    puts "\n"
     puts "EXACT MATCHES: #{exact_match_count}"
     exact_match_count
   end
